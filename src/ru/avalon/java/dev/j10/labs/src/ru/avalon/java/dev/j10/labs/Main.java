@@ -11,15 +11,13 @@ public class Main {
          * FIXME(Студент): Измените определение метода так, чтобы он стал точкой входа в приложение.
          */
         Address ivanovAddress = new Address (123456," Санкт-Петербург, ул. Оптиков д. 1");
-        Address smithAddress = new Address (1,"");
-        Passport passportIvanov = new Passport("1234", "222333", "Иванов", "Иван", "Иванович", LocalDate.of(1990, 1, 31), LocalDate.of(2018, 1, 31), "ТП№1 ОУФМС" );
-        Passport passportSmith = new Passport("5678", "999000", "Smith", "John Edvard", LocalDate.of(1990, 1, 31), LocalDate.of(2018, 1, 31), "NY 1st Avenue" );
-        
-        Person ivanov = new Person(passportIvanov, ivanovAddress);
+ 
+        Person ivanov = new Person("Иванов", "Иван", "Иванович", ivanovAddress);
         
         Person smith = null;
-        smith = new Person (passportSmith, smithAddress );
+        smith = new Person ("John Edvard", "Smith" );
         
+        Passport passportIvanov = new Passport("1234", "222333", "Иванов2", "Иван2", LocalDate.of(1990, 1, 31), LocalDate.of(2018, 1, 31), "fff" );
         
 
         /*
@@ -54,9 +52,9 @@ public class Main {
          *    переменной 'smith'.
          */
         String ivan = ivanov.getFullName ();
-        String smith1 = passportSmith.getFullName ();
+        String smith1 = smith.getFullName ();
         String ivanAddress = ivanov.getAddress();
-        String smithAddress1 = smith.getAddress();
+        String smithAddress = smith.getAddress();
 
        
         /*

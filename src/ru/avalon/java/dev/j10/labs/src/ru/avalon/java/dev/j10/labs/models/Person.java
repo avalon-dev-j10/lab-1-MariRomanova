@@ -11,16 +11,23 @@ import ru.avalon.java.dev.j10.labs.commons.Address;
  *     <li>пропиской по месту жительства.
  * </ol>
  */
-public class Person {
-    Passport passport; 
-    Address adrs;
+public class Person extends Passport{
+
+     Address adrs;
      
-      public Person (Passport passport,  Address adrs){
-      this.passport = passport;
+      public Person (String name, String surname){
+      super(name, surname);
+    }
+    
+     public Person (String name, String surname, Address adrs){
+      super(name, surname);
       this.adrs = adrs;
     }
- 
-    
+    public Person (String surname, String name, String patronymic, Address adrs){
+      super(surname, name, patronymic);
+      this.adrs = adrs;
+        
+    }
     
     /*
      * TODO(Студент): Создайте класс Address.
@@ -55,14 +62,28 @@ public class Person {
      * @return имя человека в виде строки.
      */
     
+    
+    public String getFullName() {
         /*
          * TODO(Студент): Закончить определение метода 'getFullName()' класса 'Person'
          */
-     public String getFullName() {
-           return passport.getFullName();
-        }
+       // patronymic.equals("")
+        if ( patronymic == null || patronymic.equals("")) 
+            { if (name.contains(" ")) {
+                int index = name.lastIndexOf(" ");
+                
+                   return name.substring(0,index+2) + ". " + surname;
+             } else  {
+                return name + surname;
+                }
+             }
+        else {return surname + " " + name + " " + patronymic;}
+        
+    }
+    
+   
 
-       /**
+    /**
      * Возвращает адрес, по которому проживает человек.
      * <p>
      * Возвращаемый адрес соответствует месту постоянной
