@@ -1,3 +1,4 @@
+package ru.avalon.java.dev.j10.labs.commons;
 /*
  * TODO(Студент): Создайте класс Address.
  *
@@ -13,3 +14,19 @@
  * 4. Подумайте над тем, какие методы должны быть объявлены
  *    в классе.
  */
+
+
+public class Address {
+    int index;
+    String city;
+    
+    public Address (int index, String city) {
+        this.index = index;
+        this.city = city;
+    }
+    
+    
+     public String toString() {
+  return " Адрес " + index + city;
+}
+}

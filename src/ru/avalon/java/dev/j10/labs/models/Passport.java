@@ -1,4 +1,6 @@
 package ru.avalon.java.dev.j10.labs.models;
+import java.util.*;
+import java.time.*;
 
 /**
  * Представление о паспортных данных человека.
@@ -15,8 +17,59 @@ package ru.avalon.java.dev.j10.labs.models;
  *  <li> орган, выдавший документ.
  * </ol>
  */
-class Passport {
+public class Passport {
+    private String serial;
+    private String number;
+    private String name;
+    private String surname;
+    private String patronymic;
+    private LocalDate birthDate;
+    private LocalDate dateOfIssue;
+    private String issuingAuthority;
+    
+   // String nnn = String.format("%4.4s", serial);
 
+    public Passport(String serial, String number, String surname, String name, LocalDate birthDate, LocalDate dateOfIssue, String issuingAuthority) {
+        this.name = name;
+        this.surname = surname;
+        this.serial = serial;
+        this.number = number;
+        this.birthDate = birthDate;
+        this.dateOfIssue = dateOfIssue;
+        this.issuingAuthority = issuingAuthority;
+    }
+
+    public Passport( String serial, String number, String surname, String name, String patronymic, LocalDate birthDate, LocalDate dateOfIssue, String issuingAuthority) {
+        this(serial, number,surname, name, birthDate, dateOfIssue, issuingAuthority);
+        this.patronymic = patronymic;
+    }
+       
+   public String getSecondName(){
+         if (name.contains(" ")) {
+                int index = name.lastIndexOf(" ");                
+                   return name.substring(index+2);
+             }
+         else return "Нет второго имени";
+    }
+ 
+     public String getFullName() {
+        /*
+         * TODO(Студент): Закончить определение метода 'getFullName()' класса 'Person'
+         */
+       // patronymic.equals("")
+        if ( patronymic == null || patronymic.equals("")) 
+            { if (name.contains(" ")) {
+                int index = name.lastIndexOf(" ");
+                
+                   return name.substring(0,index+2) + ". " + surname;
+             } else  {
+                return name + surname;
+                }
+             }
+        else {return surname + " " + name + " " + patronymic;}
+        
+    }
+   
     /*
      * TODO(Студент): Закончить определение класса.
      *
@@ -37,4 +90,16 @@ class Passport {
      * 5. Обеспечте возможность использования класса за
      *    пределами пакета.
      */
+
+    public String getName() {
+        return name;
+    }
+
+    public String getSurname() {
+        return surname;
+    }
+
+    public String getPatronymic() {
+        return patronymic;
+    }
 }

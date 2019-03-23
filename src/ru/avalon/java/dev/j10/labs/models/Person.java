@@ -1,5 +1,5 @@
 package ru.avalon.java.dev.j10.labs.models;
-
+import ru.avalon.java.dev.j10.labs.commons.Address;
 /**
  * Представление о человеке.
  * <p>
@@ -12,7 +12,16 @@ package ru.avalon.java.dev.j10.labs.models;
  * </ol>
  */
 public class Person {
-
+    Passport passport; 
+    Address adrs;
+     
+      public Person (Passport passport,  Address adrs){
+      this.passport = passport;
+      this.adrs = adrs;
+    }
+ 
+    
+    
     /*
      * TODO(Студент): Создайте класс Address.
      *
@@ -43,17 +52,17 @@ public class Person {
      * Если у человека нет ни Отчества ни Второго имени, а
      * есть только Имя и Фамилия, то возвращает их, разделённые
      * пробелом.
-     *
      * @return имя человека в виде строки.
      */
-    public String getFullName() {
+    
         /*
          * TODO(Студент): Закончить определение метода 'getFullName()' класса 'Person'
          */
-        return null;
-    }
+     public String getFullName() {
+           return passport.getFullName();
+        }
 
-    /**
+       /**
      * Возвращает адрес, по которому проживает человек.
      * <p>
      * Возвращаемый адрес соответствует месту постоянной
@@ -65,6 +74,9 @@ public class Person {
         /*
          * TODO(Студент): Закончить определение метода 'getAddress()' класса 'Person'
          */
-        return null;
+        if (adrs == null){
+            return "Адрес не задан";
+        } else
+        return adrs.toString();
     }
 }
